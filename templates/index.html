@@ -1,0 +1,19 @@
+{% extends "layouts/default.html" %}
+{% block title %}cl-20-questions{% endblock %}
+{% block content %}
+<main>
+  <div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">cl-20-questions</h1>
+    <div class="col-lg-6 mx-auto" id="question-container">
+      <h2 class="display-6 mb-4">{{node.question}}</h2>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+
+    {% if node.yes %}
+        <button type="button" class="btn btn-success btn-lg px-4 gap-3" hx-get="/next?node={{node.yes}}&response=yes" hx-target="#question-container">Yes</button>
+        <button type="button" class="btn btn-danger btn-lg px-4" hx-get="/next?node={{node.no}}&response=no" hx-target="#question-container">No</button>
+{% endif %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
